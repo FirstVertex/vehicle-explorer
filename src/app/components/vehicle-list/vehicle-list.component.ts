@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ClrDatagridStateInterface } from '@clr/angular';
 import { Router } from '@angular/router';
 import { timer } from 'rxjs';
-import { IListRequest } from 'src/app/dynatron-api/api-list';
-import { Vehicle } from 'src/app/models/vehicle';
-import { VehicleService } from 'src/app/services/vehicle.service';
+import { IListRequest } from '../../dynatron-api/api-list';
+import { Vehicle } from '../../models/vehicle';
+import { VehicleService } from '../../services/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-list',

@@ -1,4 +1,4 @@
-import { Vehicle } from "src/app/models/vehicle";
+import { Vehicle } from "../models/vehicle";
 
 // describes the available parameters of the Dynatron api
 export interface IListRequest {
