@@ -1,0 +1,39 @@
+<h2>Vehicles</h2>
+<clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="isLoading" class="datagrid-compact">
+  <clr-dg-column [clrDgSortBy]="'squishVin'">Squish VIN</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'year'">Year</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'make'">Make</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'model'">Model</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'trim'">Trim</clr-dg-column>
+  <clr-dg-column [clrDgSortBy]="'body'">Body</clr-dg-column>
+  <clr-dg-row *ngFor="let vehicle of vehicles">
+    <clr-dg-cell class="button-cell"><button class="btn btn-primary btn-sm" (click)="openDetail(vehicle)">{{vehicle.squishVin}}</button></clr-dg-cell>
+    <clr-dg-cell>{{vehicle.year}}</clr-dg-cell>
+    <clr-dg-cell>{{vehicle.make}}</clr-dg-cell>
+    <clr-dg-cell>{{vehicle.model}}</clr-dg-cell>
+    <clr-dg-cell>{{vehicle.trim}}</clr-dg-cell>
+    <clr-dg-cell>{{vehicle.body}}</clr-dg-cell>
+  </clr-dg-row>
+  <clr-dg-footer>
+    <label>Show </label>
+    <clr-dropdown [clrCloseMenuOnItemClick]="true" class="footer-dropdown">
+      <button type="button" class="dropdown-toggle btn btn-outline-primary" clrDropdownTrigger>
+        {{pageSize}}
+        <clr-icon shape="caret down"></clr-icon>
+      </button>
+      <clr-dropdown-menu clrPosition="top-left" *clrIfOpen>      
+        <button type="button" clrDropdownItem (click)="pageSize=10">10</button>
+        <button type="button" clrDropdownItem (click)="pageSize=25">25</button>
+        <button type="button" clrDropdownItem (click)="pageSize=50">50</button>
+        <button type="button" clrDropdownItem (click)="pageSize=100">100</button>
+        <button type="button" clrDropdownItem (click)="pageSize=10000">All</button>      
+      </clr-dropdown-menu>
+    </clr-dropdown>
+    <label style="margin-right: 80px"> Items</label>
+    {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}}
+    of {{total}} Vehicles
+    <clr-dg-pagination #pagination [clrDgTotalItems]="total" [clrDgPageSize]="pageSize"></clr-dg-pagination>
+  </clr-dg-footer>
+  <clr-dg-placeholder>No Vehicles found</clr-dg-placeholder>
+</clr-datagrid>
+<app-vehicle-detail></app-vehicle-detail>

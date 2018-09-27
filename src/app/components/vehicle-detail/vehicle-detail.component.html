@@ -1,0 +1,9 @@
+<clr-modal [(clrModalOpen)]="isOpen">
+  <h3 class="modal-title" *ngIf="isOpen">Vehicle Detail for {{vehicle.squishVin}}</h3>
+  <div class="modal-body"*ngIf="isOpen">
+    <pre>{{vehicle | json}}</pre>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline" (click)="isOpen = false">Close</button>
+  </div>
+</clr-modal>
